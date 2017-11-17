@@ -8,10 +8,16 @@
 
 import UIKit
 
+class TodoCell : UITableViewCell {
+    @IBOutlet weak var btnCheckbox: UIButton!
+    @IBOutlet weak var lblTitle: UILabel!
+}
+
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+    // var objects = [Any]()
+    var todos = [Todo]();
 
 
     override func viewDidLoad() {
@@ -25,6 +31,8 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        getTodos();
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,9 +47,9 @@ class MasterViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        //todos.insert(Todo(), at: 0)
+        //let indexPath = IndexPath(row: 0, section: 0)
+        //tableView.insertRows(at: [indexPath], with: .automatic)
     }
 
     // MARK: - Segues
@@ -49,9 +57,9 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let todo = todos[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.detailItem = todo
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -65,14 +73,15 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return todos.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TodoCell;
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let todo = todos[indexPath.row];
+        cell.lblTitle.text = todo.title;
+        cell.isSelected = todo.completed;
         return cell
     }
 
@@ -83,13 +92,49 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            todos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+    private func getTodos() {
+        let urlString = "https://jsonplaceholder.typicode.com/todos"
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            guard let data = data else { return }
+            //Implement JSON decoding and parsing
+            do {
+                //Decode retrived data with JSONDecoder and assing type of Article object
+                let todosData = try JSONDecoder().decode([Todo].self, from: data)
+                
+                //Get back to the main queue
+                DispatchQueue.main.async {
+                    //print(articlesData)
+                    self.todos = todosData;
+                    self.tableView?.reloadData();
+                }
+                
+            } catch let jsonError {
+                print(jsonError)
+            }
+            
+            
+            }.resume()
+    }
 
+    @IBAction func btnChecboxClicked(_ btn: UIButton) {
+    
+    btn.isSelected = !btn.isSelected;
+    }
+    
+    
 
 }
 

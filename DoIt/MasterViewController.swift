@@ -25,12 +25,12 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+//        navigationItem.rightBarButtonItem = addButton
+//        if let split = splitViewController {
+//            let controllers = split.viewControllers
+//            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+//        }
         
         getTodos();
     }
@@ -81,7 +81,7 @@ class MasterViewController: UITableViewController {
 
         let todo = todos[indexPath.row];
         cell.lblTitle.text = todo.title;
-        cell.isSelected = todo.completed;
+        cell.btnCheckbox.isSelected = todo.completed;
         return cell
     }
 
@@ -94,10 +94,10 @@ class MasterViewController: UITableViewController {
         if editingStyle == .delete {
             todos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
+        // } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
-    }
+        // }
+        }}
     
     private func getTodos() {
         let urlString = "https://jsonplaceholder.typicode.com/todos"
@@ -130,8 +130,7 @@ class MasterViewController: UITableViewController {
     }
 
     @IBAction func btnChecboxClicked(_ btn: UIButton) {
-    
-    btn.isSelected = !btn.isSelected;
+        btn.isSelected = !btn.isSelected;
     }
     
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C3F98381FC08366008817D9 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3F98371FC08366008817D9 /* AddViewController.swift */; };
 		9CC9164C1FBF82570095EB07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9164B1FBF82570095EB07 /* AppDelegate.swift */; };
 		9CC9164E1FBF82570095EB07 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9164D1FBF82570095EB07 /* MasterViewController.swift */; };
 		9CC916501FBF82570095EB07 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC9164F1FBF82570095EB07 /* DetailViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C3F98371FC08366008817D9 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		9CC916481FBF82570095EB07 /* DoIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC9164B1FBF82570095EB07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CC9164D1FBF82570095EB07 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -101,14 +103,15 @@
 		9CC9164A1FBF82570095EB07 /* DoIt */ = {
 			isa = PBXGroup;
 			children = (
-				9CC9167B1FBF85D20095EB07 /* ViewModels */,
-				9CC9164B1FBF82570095EB07 /* AppDelegate.swift */,
 				9CC9164D1FBF82570095EB07 /* MasterViewController.swift */,
 				9CC9164F1FBF82570095EB07 /* DetailViewController.swift */,
+				9CC9167B1FBF85D20095EB07 /* Models */,
+				9CC9164B1FBF82570095EB07 /* AppDelegate.swift */,
 				9CC916511FBF82570095EB07 /* Main.storyboard */,
 				9CC916541FBF82570095EB07 /* Assets.xcassets */,
 				9CC916561FBF82570095EB07 /* LaunchScreen.storyboard */,
 				9CC916591FBF82570095EB07 /* Info.plist */,
+				9C3F98371FC08366008817D9 /* AddViewController.swift */,
 			);
 			path = DoIt;
 			sourceTree = "<group>";
@@ -131,12 +134,12 @@
 			path = DoItUITests;
 			sourceTree = "<group>";
 		};
-		9CC9167B1FBF85D20095EB07 /* ViewModels */ = {
+		9CC9167B1FBF85D20095EB07 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				9CC9167C1FBF85FD0095EB07 /* Todo.swift */,
 			);
-			path = ViewModels;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3F98381FC08366008817D9 /* AddViewController.swift in Sources */,
 				9CC916501FBF82570095EB07 /* DetailViewController.swift in Sources */,
 				9CC9164E1FBF82570095EB07 /* MasterViewController.swift in Sources */,
 				9CC9164C1FBF82570095EB07 /* AppDelegate.swift in Sources */,

@@ -13,14 +13,23 @@ class Todo : Decodable {
     var userId: Int;
     var title: String;
     var completed: Bool;
+    var notes: String?;
+    var dueDate: Date?;
+    var hasDueDate: Bool?;
     
     init(id: Int,
          userId: Int,
          title: String,
-         completed: Bool) {
+         completed: Bool,
+         notes: String?,
+         dueDate: Date?,
+         hasDueDate: Bool?) {
         self.id = id;
         self.userId = userId;
         self.title = title;
         self.completed = completed;
+        self.notes = notes;
+        self.dueDate = dueDate;
+        self.hasDueDate = hasDueDate;
     }
 }

@@ -105,13 +105,13 @@
 			children = (
 				9CC9164D1FBF82570095EB07 /* MasterViewController.swift */,
 				9CC9164F1FBF82570095EB07 /* DetailViewController.swift */,
+				9C3F98371FC08366008817D9 /* AddViewController.swift */,
 				9CC9167B1FBF85D20095EB07 /* Models */,
 				9CC9164B1FBF82570095EB07 /* AppDelegate.swift */,
 				9CC916511FBF82570095EB07 /* Main.storyboard */,
 				9CC916541FBF82570095EB07 /* Assets.xcassets */,
 				9CC916561FBF82570095EB07 /* LaunchScreen.storyboard */,
 				9CC916591FBF82570095EB07 /* Info.plist */,
-				9C3F98371FC08366008817D9 /* AddViewController.swift */,
 			);
 			path = DoIt;
 			sourceTree = "<group>";

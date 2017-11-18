@@ -14,7 +14,16 @@ class TodoCell : UITableViewCell {
 }
 
 class MasterViewController: UITableViewController {
-
+    
+    // Back from add Modal
+    @IBAction func unwindToTodos(segue:UIStoryboardSegue) {
+        if let origin = segue.source as? AddViewController {
+            let newTodo = origin.newTodo;
+            // Do something with the data
+            insertTodo(todo: newTodo!);
+        }
+    }
+    
     var detailViewController: DetailViewController? = nil
     // var objects = [Any]()
     var todos = [Todo]();
@@ -50,6 +59,12 @@ class MasterViewController: UITableViewController {
         //todos.insert(Todo(), at: 0)
         //let indexPath = IndexPath(row: 0, section: 0)
         //tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+    func insertTodo(todo: Todo) {
+        todos.insert(todo, at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
 
     // MARK: - Segues

@@ -15,6 +15,8 @@ class TodoCell : UITableViewCell {
 
 class MasterViewController: UITableViewController {
     
+    var indexPath: IndexPath?;
+    
     // Back from add Modal
     @IBAction func unwindToTodos(segue:UIStoryboardSegue) {
         if let origin = segue.source as? AddViewController {
@@ -47,6 +49,9 @@ class MasterViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+        
+        if (indexPath != nil) {
+            self.tableView.reloadRows(at: [indexPath!], with: .automatic) }
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,11 +77,14 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
+                self.indexPath = indexPath;
                 let todo = todos[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = todo
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
+//                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+//                controller.navigationItem.leftItemsSupplementBackButton = true
+//                controller.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .edit, target: self, action: Selector(""))
+//                controller.navigationItem.rightBarButtonItem?.isEnabled = true;
             }
         }
     }

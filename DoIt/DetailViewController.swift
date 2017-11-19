@@ -10,6 +10,30 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var isEdit : Bool = false;
+    
+    @IBAction func handleEdit(_ sender: UIBarButtonItem) {
+        self.txtFieldTitle.isEnabled = true;
+        
+        if isEdit
+        {
+            isEdit = false
+            sender.title = "Edit"
+            
+            // Disable UI and save the edited todo info
+            txtFieldTitle.isEnabled = false;
+            detailItem?.title = txtFieldTitle.text!;
+        }
+        else
+        {
+            isEdit = true
+            sender.title = "Save"
+            
+            // Enable UI to add ability to edit todo info
+            txtFieldTitle.isEnabled = true;
+        }
+    }
+
     @IBOutlet weak var txtFieldTitle: UITextField!
     
     func configureView() {

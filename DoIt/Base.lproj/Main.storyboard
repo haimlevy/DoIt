@@ -76,14 +76,14 @@
                                     <!--2017-11-18 10:07:01 +0000-->
                                 </date>
                             </datePicker>
-                            <textView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8UW-ub-0H5">
+                            <textView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8UW-ub-0H5">
                                 <rect key="frame" x="16" y="195" width="343" height="246"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dk3-8S-hPm">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dk3-8S-hPm">
                                 <rect key="frame" x="310" y="446" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
@@ -102,7 +102,10 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="dtPickerDueDate" destination="SeA-YG-nfw" id="CWN-ml-ckD"/>
+                        <outlet property="switchHasDueDate" destination="dk3-8S-hPm" id="qLA-Nb-Z3S"/>
                         <outlet property="txtFieldTitle" destination="Quh-NT-H9M" id="B1n-ED-aOg"/>
+                        <outlet property="txtViewNotes" destination="8UW-ub-0H5" id="c38-mj-z3u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -139,18 +142,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" alpha="0.25" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLf-XM-4pS">
-                                            <rect key="frame" x="7" y="5" width="32" height="32"/>
+                                        <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLf-XM-4pS">
+                                            <rect key="frame" x="7" y="5" width="36" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" image="img-unchecked"/>
-                                            <state key="selected" image="img-checked"/>
+                                            <state key="selected" image="icons8-checked-48"/>
                                             <connections>
                                                 <action selector="btnChecboxClicked:" destination="7bK-jq-Zjz" eventType="touchUpInside" id="Wch-hv-UFL"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhH-iX-8a1">
-                                            <rect key="frame" x="47" y="10" width="312" height="21"/>
+                                            <rect key="frame" x="51" y="11" width="308" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                             <nil key="textColor"/>
@@ -312,7 +314,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img-checked" width="48" height="48"/>
+        <image name="icons8-checked-48" width="48" height="48"/>
         <image name="img-unchecked" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>

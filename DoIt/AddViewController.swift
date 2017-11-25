@@ -19,7 +19,7 @@ class AddViewController: UIViewController {
         dtPickerDueDate.isEnabled = switchHasDueDate.isOn;
     }
     
-    var newTodo: Todo?;
+    var newTodo: TodoVM?;
     
     @IBAction func save(_ sender: Any) {
         performSegue(withIdentifier: "unwindSegueToTodos", sender: self)
@@ -31,14 +31,14 @@ class AddViewController: UIViewController {
         }
     }
     
-    func createTodo() -> Todo? {
+    func createTodo() -> TodoVM? {
         var dueDate : Date? = nil;
         
         if (switchHasDueDate.isOn) {
             dueDate = dtPickerDueDate.date;
         }
         
-        let todo = Todo(
+        let todo = TodoVM(
             id: 1,
             userId: 46065,
             title: txtFldTitle.text!,

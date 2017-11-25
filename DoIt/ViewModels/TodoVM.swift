@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Todo : Decodable {
+class TodoVM : Decodable {
     var id : Int;
     var userId: Int;
     var title: String;
@@ -16,6 +16,7 @@ class Todo : Decodable {
     var notes: String?;
     var dueDate: Date?;
     var hasDueDate: Bool?;
+    
     
     init(id: Int,
          userId: Int,

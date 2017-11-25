@@ -100,7 +100,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var detailItem: Todo? {
+    var detailItem: TodoVM? {
         didSet {
             // Update the view.
             configureView()
